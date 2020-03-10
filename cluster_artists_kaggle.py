@@ -14,6 +14,7 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.feature_extraction.text import TfidfVectorizer
+import numpy as np
 
 
 def plot_dendrogram(clustered, artists):
@@ -50,9 +51,11 @@ def words_per_artist(artist_lyrics, lyrics_tfidf_matrix, ix2word, n=10):
 
 
 def plot_pca(tfidf_matrix):
-    pca = PCA(n_components=2)
+    n_components = 20
+    pca = PCA(n_components=n_components)
     X = pca.fit_transform(tfidf_matrix)  # -> "Position" bestimmen in zwei Dimensionen
-    plt.figure(figsize=(20, 20))
+    plot_cumulative_variance(pca.explained_variance_ratio_, n_components=n_components)
+    plt.figure(figsize=(8, 8))
 
     artists_by_genre = {}  # Key = Genre, Value = Liste mit allen Artisten + Position
     for genre, x, y, artist in zip(artist2genre.values(), X[:, 0], X[:, 1], artist2genre.keys()):
@@ -65,7 +68,20 @@ def plot_pca(tfidf_matrix):
         artists, xs, ys = list(zip(*values))
         plt.scatter(xs, ys, label=genre)
 
+    plt.title('Principlal component analysis')
     plt.legend()
+    plt.show()
+
+
+def plot_cumulative_variance(pca_explained_variance_ratio_, n_components):
+    plt.figure(figsize=(5, 5))
+    # explained_variance_ratio_ is an array in which we see that chosing X components explains Y %
+    # of the variance within our data set
+    plt.plot(np.cumsum(pca_explained_variance_ratio_))
+    plt.xlabel('Number of Components')
+    plt.xlim(0, n_components)
+    plt.ylabel('Cumulative Proportion of Variance Explained')
+    plt.ylim(0, 1)
     plt.show()
 
 
