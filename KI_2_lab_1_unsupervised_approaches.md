@@ -77,6 +77,17 @@ kmeans = KMeans(n_clusters=10)
 clustered = kmeans.fit(tfidf_matrix_stop_words_filtered)
 ```
 
+#### Hierarchical clustering
+
+Ebenfalls wird basierend auf der tfidf_matrix ein Dendogramm mit "Ward" als Cluster-Linkage-Kriterium erstellt. 
+
+```Python
+clustered_artist = linkage(tfidf_matrix_stop_words_filtered, 'ward')
+lot_dendrogram(clustered_artist, artist_names)
+```
+
+
+
 ## Resultat
 
 Cluster the song lyrics into the numer of genres or artists. Do the clusters correspond to the genres/artists? (kMeans)
@@ -85,7 +96,7 @@ Das selbe Verhalten wie beim PCA-Plot ist auch beim Clustern der Samples ersicht
 
 | Cluster | Wörter                                                       | Genre            |
 | ------- | ------------------------------------------------------------ | ---------------- |
-| 0       | love,  just,  don,  know,  oh,  ll,  like,  let,  yeah,  wanna,  make,  way,  little,  ve,  want, ... |                  |
+| 0       | love,  just,  don,  know,  oh,  ll,  like,  let,  yeah,  wanna,  make,  way,  little,  ve,  want, ... | ?                |
 | 1       | like,  don,  just,  ll,  love,  know,  ve,  oh,  time,  got,  want,  say,  life,  let,  come, ... |                  |
 | 2       | niggas,  nigga,  hoes,  homie,  gon,  pussy,  tryna,  haters,  holla,  gangsta,  mma,  mayne,  shawty,  imma,  rapper, ... | Hip-Hop          |
 | 3       | mutilation,  kasso,  walkaway,  infection,  anodized,  saturates,  undercurrents,  demise,  janssens,  impact,  elimination,  breed,  beings,  desecrate,  forced, ... |                  |
@@ -100,9 +111,13 @@ Das selbe Verhalten wie beim PCA-Plot ist auch beim Clustern der Samples ersicht
 
 **Generate a dendrogram of the songs. Do songs from the same genre/artists appear in the same branches? Do higher level nodes group similar artists/genres as their children? (hierarchical clustering)**
 
+Die Klassifizierung beim Dendogramm mit "Ward" funktioniert sehr gut bis auf einzelne Ausnahmen. Selbst bei der Gruppierung auf höherer Ebene ist es nocht nachvollziehbar da die Musikstile in bestimmten Punkten ähnlich sind:
 
+- Hip-Hop
+- R&B, Jazz, Country, Pop
+- Metal, Electronic, Rock, Indie, Folk
 
-
+Link: https://github.com/sagerpascal/KI2-Praktikum1/blob/master/dendrogram.svg
 
 
 
@@ -194,10 +209,11 @@ Eine Analyse der TF-IDF scores  mit dem PCA-Plot zwischen den Künstlern oder de
 
 ![image-20200325221902029](C:\Users\lucas\AppData\Roaming\Typora\typora-user-images\image-20200325221902029.png)
 
+Explained Variance:
 
+![image-20200326000106854](C:\Users\lucas\AppData\Roaming\Typora\typora-user-images\image-20200326000106854.png)
 
 ## Quellen
 
-C. Müller, Andreas und Guido, Sarah 2017: Introduction to Machine Learning with Python: A Guide for Data Scientists
-
-scikit-learn2019: Importance of Feature Scaling. URL: https://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html
+- C. Müller, Andreas und Guido, Sarah 2017: Introduction to Machine Learning with Python: A Guide for Data Scientists
+- scikit-learn2019: Importance of Feature Scaling. URL: https://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html
