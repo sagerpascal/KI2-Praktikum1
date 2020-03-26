@@ -2,7 +2,7 @@
 
 **Authoren**: Pascal Sager, Luca Stähli
 
-**Code**: https://github.com/sagerpascal/KI1_Lab1_Reinforcment-Learning
+**Code**: https://github.com/sagerpascal/KI2-Praktikum1
 
 ## Ziel
 
