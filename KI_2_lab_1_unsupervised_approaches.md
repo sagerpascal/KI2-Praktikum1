@@ -40,7 +40,7 @@ Die TF-IDF Methode bewertet also, wie wichtig ein Wort im Vergleich zu dessen Ko
 ```python
 tfidf_vectorizer = TfidfVectorizer() # sublinear_tf=True, stop_words='english'
 # compute the word counts, idf and tf-idf values of the lyrics
-tfidf_matrix = tfidf_vectorizer.fit_transform(lyrics).toarray()
+tfidf_matrix = tfidf_vectorizer.fit_transform(artist_lyrics).toarray()
 ix2word = tfidf_vectorizer.get_feature_names()
 print(tfidf_matrix.shape)
 ```
