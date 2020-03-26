@@ -111,7 +111,7 @@ Das selbe Verhalten wie beim PCA-Plot ist auch beim Clustern der Samples ersicht
 
 **Generate a dendrogram of the songs. Do songs from the same genre/artists appear in the same branches? Do higher level nodes group similar artists/genres as their children? (hierarchical clustering)**
 
-Die Klassifizierung beim Dendogramm mit "Ward" funktioniert sehr gut bis auf einzelne Ausnahmen. Selbst bei der Gruppierung auf höherer Ebene ist es nocht nachvollziehbar da die Musikstile in bestimmten Punkten ähnlich sind:
+Die Klassifizierung beim Dendogramm mit "Ward" funktioniert sehr gut bis auf einzelne Ausnahmen. Selbst bei der Gruppierung auf höherer Ebene ist es noch nachvollziehbar, da die Musikstile der Gruppen in bestimmten Punkten ähnlich sind:
 
 - Hip-Hop
 - R&B, Jazz, Country, Pop
